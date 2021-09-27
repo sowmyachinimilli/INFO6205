@@ -7,6 +7,8 @@ import edu.neu.coe.info6205.sort.BaseHelper;
 import edu.neu.coe.info6205.sort.Helper;
 import edu.neu.coe.info6205.sort.SortWithHelper;
 import edu.neu.coe.info6205.util.Config;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class InsertionSort<X extends Comparable<X>> extends SortWithHelper<X> {
 
@@ -57,7 +59,13 @@ public class InsertionSort<X extends Comparable<X>> extends SortWithHelper<X> {
      */
     public void sort(X[] xs, int from, int to) {
         final Helper<X> helper = getHelper();
-
+        int j;
+        for(int i=from;i<to;i++){
+            j=i;
+            while(j>0 && helper.swapStableConditional(xs,j)){
+                j=j-1;
+            }
+        }
         // TO BE IMPLEMENTED
     }
 
@@ -65,5 +73,18 @@ public class InsertionSort<X extends Comparable<X>> extends SortWithHelper<X> {
 
     public static <T extends Comparable<T>> void sort(T[] ts) {
         new InsertionSort<T>().mutatingSort(ts);
+    }
+    public void main(){
+        Scanner sc=new Scanner(System.in);
+        //final Helper<X> helper = getHelper();
+        ArrayList<Integer> arr = new ArrayList<Integer>();
+        int n=sc.nextInt();
+        int i=0;
+        while(i<n && sc.hasNext()){
+            arr.set(sc.nextInt(),i);
+            i++;
+        }
+        InsertionSort IS= new InsertionSort();
+        IS.sort(arr);
     }
 }
