@@ -15,13 +15,13 @@ import java.util.concurrent.ForkJoinPool;
  * TODO tidy it up a bit.
  */
 public class Main {
-    static int arraySize=2000000;
-    static int threadcount=8;
-    static ForkJoinPool myPool = new ForkJoinPool(threadcount);
+    static int arraySize= 2000000;
+    static int threadcount= 8;
+    static ForkJoinPool myPool =new ForkJoinPool(threadcount);
     public static void main(String[] args) {
 
-        System.out.println("Degree of parallelism: " + myPool.getParallelism());
-        System.out.println("Array Size is "+arraySize);
+        System.out.println("Degree of parallelism:  " + myPool.getParallelism());
+        System.out.println("Array Size is  "+arraySize);
         Random random = new Random();
         int[] array = new int[arraySize];
         ArrayList<Long> timeList = new ArrayList<>();
